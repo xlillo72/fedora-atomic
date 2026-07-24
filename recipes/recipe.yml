@@ -22,22 +22,32 @@ modules:
     install:
       packages:
         - pv
+        - cockpit
         - cockpit-ws
         - cockpit-podman
         - cockpit-files
         - cockpit-selinux
         - cockpit-networkmanager
         - cockpit-storaged
+        - cockpit-ostree
         - htop
         - mc
         - zsh
+        - wsdd
+        - btrfs-assistant
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case
-        - amd-gpu-firmware
-        - nvidia-gpu-firmware
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  
+  - type: systemd
+    user:
+      enabled:
+        - podman.service
+    system:
+      enabled:
+        - cockpit.socket
