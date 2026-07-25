@@ -30,7 +30,7 @@ modules:
         - cockpit-networkmanager
         - cockpit-storaged
         - cockpit-ostree
-        - htop
+        - btop
         - mc
         - zsh
         - wsdd
